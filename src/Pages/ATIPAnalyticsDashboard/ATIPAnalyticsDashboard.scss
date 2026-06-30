@@ -1,0 +1,237 @@
+// ATIPAnalyticsDashboard.scss
+// Color tokens
+$color-bg: #F8FAFC;
+$color-panel: #FFFFFF;
+$color-border: #E5E7EB;
+$color-text: #1F2937;
+$color-text-muted: #6B7280;
+$color-passed: #16A34A;
+$color-failed: #DC2626;
+$color-warning: #D97706;
+$color-primary: #1E3A8A;
+
+.atip-analytics {
+  background: $color-bg;
+  padding: 28px;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: $color-text;
+
+  &__loading,
+  &__error,
+  &__empty {
+    padding: 60px 24px;
+    text-align: center;
+    color: $color-text-muted;
+    font-size: 15px;
+  }
+
+  &__error button {
+    margin-left: 12px;
+    padding: 6px 14px;
+    border: 1px solid $color-border;
+    background: $color-panel;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  &__header {
+    margin-bottom: 20px;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    p {
+      color: $color-text-muted;
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+
+  &__stat-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+
+    @media (max-width: 1100px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__main-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1.1fr;
+    gap: 18px;
+    margin-bottom: 24px;
+
+    @media (max-width: 1100px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__bottom-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 18px;
+
+    @media (max-width: 1100px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.stat-card {
+  background: $color-panel;
+  border: 1px solid $color-border;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &__label {
+    font-size: 12.5px;
+    color: $color-text-muted;
+  }
+
+  &__value {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  &--passed .stat-card__value { color: $color-passed; }
+  &--failed .stat-card__value { color: $color-failed; }
+  &--warning .stat-card__value { color: $color-warning; }
+}
+
+.panel {
+  background: $color-panel;
+  border: 1px solid $color-border;
+  border-radius: 10px;
+  padding: 18px;
+
+  &__title {
+    font-size: 14.5px;
+    font-weight: 600;
+    margin: 0 0 14px;
+  }
+
+  &__footnote {
+    font-size: 12px;
+    color: $color-text-muted;
+    margin-top: 10px;
+  }
+}
+
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.summary-card {
+  border-left: 4px solid $color-border;
+  border-radius: 6px;
+  background: #F9FAFB;
+  padding: 10px 12px;
+
+  &--failed { border-left-color: $color-failed; }
+  &--passed { border-left-color: $color-passed; }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  &__id {
+    font-weight: 600;
+    font-size: 13.5px;
+  }
+
+  &__meta {
+    display: flex;
+    gap: 14px;
+    font-size: 12px;
+    color: $color-text-muted;
+    flex-wrap: wrap;
+  }
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 5px;
+  letter-spacing: 0.3px;
+
+  &--failed { background: #FEE2E2; color: $color-failed; }
+  &--passed { background: #DCFCE7; color: $color-passed; }
+}
+
+.donut-wrapper {
+  position: relative;
+
+  &__center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+  }
+
+  &__number {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__label {
+    font-size: 11px;
+    color: $color-text-muted;
+  }
+}
+
+.legend-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  font-size: 12.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+
+  th {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 2px solid $color-border;
+    color: $color-text-muted;
+    font-weight: 600;
+  }
+
+  td {
+    padding: 10px 8px;
+    border-bottom: 1px solid $color-border;
+  }
+}
